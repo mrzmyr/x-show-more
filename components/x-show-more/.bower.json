@@ -1,0 +1,19 @@
+{
+  "name": "x-show-more",
+  "keywords": "seed, polymer, web-components",
+  "main": "x-show-more.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.3.1"
+  },
+  "homepage": "https://github.com/mrzmyr/x-show-more",
+  "_release": "76491a6cf5",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "76491a6cf53d2bbc00d3e0a0799e8c430884104d"
+  },
+  "_source": "git://github.com/mrzmyr/x-show-more.git",
+  "_target": "master",
+  "_originalSource": "mrzmyr/x-show-more",
+  "_direct": true
+}

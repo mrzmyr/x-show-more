@@ -1,0 +1,117 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+Element providing a show more state of a text container
+
+##### Example
+
+    <x-show-more
+      text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      length="200"
+      show-more-text="more"
+      show-less-text="less"
+    ></x-show-more>
+
+@element x-show-more
+@blurb Element providing a show more state of a text container
+@status alpha
+@homepage http://mrzmyr.github.io/x-show-more
+-->
+<polymer-element name="x-show-more" attributes="text length show-more-text show-less-text">
+
+  <template>
+
+    <link rel="stylesheet" href="x-show-more.css" />
+
+    <content>
+      <div>{{ text }}</div>
+      <a href="javascript:;" on-click="{{ toggle }}">{{ buttonText }}</a>
+    </content>
+
+  </template>
+
+  <script>
+    Polymer('x-show-more', {
+
+      /**
+       * The `author` attribute sets an initial author
+       *
+       * @attribute author
+       * @type string
+       * @default 'Moritz Meyer'
+       */
+      author: 'Moritz Meyer',
+
+      /**
+       * The `text` property represents the text
+       *
+       * @property text
+       * @type number
+       * @default 20
+       */
+      text: '',
+
+      /**
+       * The `length` property represents the text length of the less state
+       *
+       * @property length
+       * @type number
+       * @default 20
+       */
+      length: 20,
+
+
+      /**
+       * The `show-less-text` property represents the button text when showing
+       * the more state
+       *
+       * @property show-less-text
+       * @type string
+       * @default 'Show Less'
+       */
+      'show-less-text': 'Show Less',
+
+      /**
+       * The `show-more-text` property represents the button text when showing
+       * the more state
+       *
+       * @property show-more-text
+       * @type string
+       * @default 'Show more'
+       */
+      'show-more-text': 'Show more',
+
+      /**
+       * The `toggle` method toggles the less and more state
+       *
+       * @method toggle
+       * @return {Object} Returns undefined.
+       */
+      toggle: function () {
+        if(this.text === this.lessText) {
+          this.text = this.originalText;
+          this.buttonText = this['show-less-text'];
+        } else {
+          this.text = this.lessText;
+          this.buttonText = this['show-more-text'];
+        }
+      },
+
+      /**
+       * The `ready` method does assign the inital text and states
+       *
+       * @method ready
+       * @return {Object} Returns undefined.
+       */
+      ready: function() {
+        this.originalText = this.text;
+        this.lessText = this.text.substr(0, this.length);
+        this.text = this.lessText;
+
+        this.buttonText = this['show-more-text'];
+      },
+    });
+
+  </script>
+
+</polymer-element>
